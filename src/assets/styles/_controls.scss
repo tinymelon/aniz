@@ -1,0 +1,57 @@
+// src/assets/styles/_controls.scss
+
+@import './variables';
+
+.base-button {
+  $button-padding: 24px;
+
+  cursor: pointer;
+  background: $primary-gradient;
+  color: #fff;
+  border: none;
+  padding: $button-padding;
+  border-radius: $button-padding;
+  font-size: $font-size-h3;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    background: $primary-gradient-hover;
+  }
+}
+
+input {
+  $input-padding: 24px;
+  $search-icon-width: 18px;
+  $search-icon-margin: 12px;
+
+  caret-color: rgba(0,0,0,0.25);
+  border: 1px solid $gray-color-3;
+  padding: $input-padding;
+  padding-left: $input-padding + $search-icon-width + $search-icon-margin;
+  font-size: $font-size-h3;
+  border-radius: $input-padding;
+  background: url("@/assets/images/search.svg") no-repeat center left $input-padding;
+  background-size: $search-icon-width;
+
+  &::placeholder {
+    color: $black-color;
+    opacity: 0.4;
+  }
+
+  &:hover {
+    &::placeholder {
+      color: $gray-color-3;
+      opacity: 0.2;
+    }
+  }
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}
