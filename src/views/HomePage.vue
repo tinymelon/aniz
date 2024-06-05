@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Home Page</h1>
-    <BaseButton :href="href">Нажми сюда</BaseButton>
+    <BaseButton :url="url">Нажми сюда</BaseButton>
     <BaseInput v-model="inputValue" :placeholder="placeholderText" />
   </div>
 </template>
@@ -22,12 +22,12 @@ export default defineComponent({
 
     const placeholderText = ref('Введите текст...');
 
-    const href = ref('/search');
+    const url = ref('/search');
 
     return {
       inputValue,
       placeholderText,
-      href
+      url
     };
   },
 });

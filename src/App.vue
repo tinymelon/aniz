@@ -3,6 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/search">Search</router-link>
+      <router-link :to="{ name: 'Search', query: { category: '1' } }">Category 1</router-link>
       <router-link :to="{ name: 'Entity', params: { someTitle: 'example-title' }}">Entity</router-link>
     </nav>
     <router-view />
