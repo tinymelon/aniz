@@ -13,9 +13,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.base-button {
-  @apply bg-primary-color text-white border-none px-4 py-2 cursor-pointer text-base;
-}
-</style>

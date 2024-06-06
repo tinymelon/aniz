@@ -20,23 +20,9 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, watch  } from 'vue';
 import { useRoute } from 'vue-router';
+import { Book } from "@/types";
 import BaseButton from '@/components/BaseButton.vue';
 import BaseInput from '@/components/BaseInput.vue';
-
-type Book = {
-  id: number,
-  title: string,
-  slug: string,
-  cover: string | null,
-  authors: Array<string>,
-  tags: Array<string>,
-  publisher: string,
-  historicalPeriod: number,
-  category: number,
-  relative: Array<number>,
-  lead: string,
-  description: string
-}
 
 export default defineComponent({
   name: 'SearchPage',
@@ -52,9 +38,14 @@ export default defineComponent({
 
     const route = useRoute();
     const category = ref(route.query.category);
+    const tag = ref(route.query.tag);
 
     watch(() => route.query.category, (newCategory) => {
       category.value = newCategory;
+    });
+
+    watch(() => route.query.tag, (newTag) => {
+      tag.value = newTag;
     });
 
     const handleClick = () => {
@@ -91,12 +82,13 @@ export default defineComponent({
       booksData,
       tagsData,
       category,
+      tag,
       fetchData
     };
   },
 });
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/styles/SearchPage.scss';
+<style scoped>
+@import '@/assets/styles/SearchPage.css';
 </style>

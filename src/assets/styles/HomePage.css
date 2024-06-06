@@ -1,0 +1,120 @@
+.banner-section {
+    position: relative;
+}
+.banner-text {
+    max-width: 45%;
+    margin-top: 58px;
+    h1 {
+        margin: 0;
+    }
+    .base-button {
+        margin-top: 31px;
+    }
+}
+.banner-image {
+    max-width: 45%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right top;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.documents-section {
+    margin-top: 58px;
+    text-align: center;
+
+    h2 {
+        text-transform: uppercase;
+        margin-bottom: 47px;
+    }
+
+    .container {
+        max-width: 1180px;
+    }
+}
+
+.carousel-wrapper {
+    margin-top: 106px;
+}
+
+.carousel-hint {
+    margin-top: 97px;
+    text-align: center;
+    position: relative;
+    line-height: 1;
+    font-size: var(--font-size-h3);
+
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(106deg, #057ce7 0%, #2696fa 50%, #05b0e7 100%);
+
+    &:before {
+        content: ' ';
+        display: block;
+        width: 28px;
+        height: 13px;
+        background: url('@/assets/images/arrows.png');
+        position: absolute;
+        top: -31px;
+        left: 50%;
+        margin-left: -14px;
+    }
+}
+
+.book-card {
+    margin: 0 42px;
+    transition: opacity 0.25s ease-in-out;
+
+    .book-cover {
+        padding: 0;
+        background-color: transparent;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &.center {
+        max-width: 346px;
+    }
+
+    &:not(.center) {
+        opacity: 0.1;
+        .book-author, .book-tags, .book-button {
+            display: none;
+        }
+
+        .book-cover {
+            img {
+                max-height: 240px;
+            }
+        }
+
+        .book-title {
+            font-size: 18px;
+        }
+    }
+}
+
+.partners-section {
+    background: var(--gray-color-1);
+    margin-top: 60px;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    text-align: center;
+
+    .partners-logos {
+        margin: 40px auto 0;
+        max-width: 590px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 45px 38px;
+
+        img {
+            max-height: 90px;
+        }
+    }
+}

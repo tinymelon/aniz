@@ -1,33 +1,19 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/search">Search</router-link>
-      <router-link :to="{ name: 'Search', query: { category: '1' } }">Category 1</router-link>
-      <router-link :to="{ name: 'Entity', params: { someTitle: 'example-title' }}">Entity</router-link>
-    </nav>
+    <BaseHeader />
     <router-view />
+    <BaseFooter />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import BaseHeader from "@/components/BaseHeader.vue";
+import BaseFooter from "@/components/BaseFooter.vue";
 
 export default defineComponent({
   name: 'App',
+  components: {BaseFooter, BaseHeader},
 });
 </script>
 
-<style>
-/* Стили для навигации */
-nav {
-  display: flex;
-  gap: 10px;
-}
-
-router-link {
-  text-decoration: none;
-  color: blue;
-}
-
-</style>

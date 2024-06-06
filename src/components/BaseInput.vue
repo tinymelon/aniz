@@ -12,9 +12,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.base-input {
-  @apply border border-font-color p-2 text-base;
-}
-</style>

@@ -1,0 +1,26 @@
+body {
+  padding: 0;
+  margin: 0;
+  cursor: default;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 0 40px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+@media screen and (max-width: 1700px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+}

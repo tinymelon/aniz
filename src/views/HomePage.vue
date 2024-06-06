@@ -1,21 +1,61 @@
 <template>
-  <div>
-    <h1>Home Page</h1>
-    <BaseButton :url="url">Нажми сюда</BaseButton>
-    <BaseInput v-model="inputValue" :placeholder="placeholderText" />
-  </div>
+  <section class="banner-section">
+    <div class="container">
+      <div class="banner-text">
+        <h1>Агрегатор научных исторических знаний</h1>
+        <BaseButton :url="url">Перейти к поиску</BaseButton>
+      </div>
+    </div>
+    <img src="@/assets/images/main_bg.png" alt="" class="banner-image">
+  </section>
+  <section class="documents-section">
+    <div class="container">
+      <h2>Исторические документы</h2>
+      <BaseSelect :options="books" :value="selectedBook" @change="goToBook" />
+    </div>
+    <Flicking
+        ref="flicking"
+        :options="{
+          circularFallback: 'linear',
+          circular: true,
+          align: 'center',
+          preventClickOnDrag: true
+        }"
+        class="carousel-wrapper"
+        @changed="onChanged"
+    >
+      <BookCard v-for="(book, index) in books" :key="index" :book="book" :class="[{ 'center': index === currentIndex }]" />
+    </Flicking>
+    <div class="carousel-hint">Передвигайте что бы увидеть больше</div>
+  </section>
+  <section class="partners-section">
+    <h2>Наши партнёры</h2>
+    <div class="partners-logos">
+      <img src="@/assets/images/ifla.png" alt="IFLA">
+      <img src="@/assets/images/mfgs.png" alt="MFGS">
+      <img src="@/assets/images/svet.svg" alt="НЭБ Свет">
+      <img src="@/assets/images/bae.svg" alt="БАЕ">
+      <img src="@/assets/images/rgb.png" alt="РГБ">
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
+import Flicking from "@egjs/vue3-flicking";
+import "@egjs/vue3-flicking/dist/flicking.css";
+import { Book } from "@/types";
 import BaseButton from '@/components/BaseButton.vue';
-import BaseInput from '@/components/BaseInput.vue';
+import BookCard from '@/components/BookCard.vue';
+import BaseSelect from "@/components/BaseSelect.vue";
 
 export default defineComponent({
   name: 'HomePage',
   components: {
+    BaseSelect,
     BaseButton,
-    BaseInput,
+    BookCard,
+    Flicking
   },
   setup() {
     const inputValue = ref('');
@@ -24,15 +64,106 @@ export default defineComponent({
 
     const url = ref('/search');
 
+    const books = ref([
+      {
+        "id": 1,
+        "title": "Книга 1",
+        "slug": "kniga-1",
+        "cover": "cover1",
+        "authors": ["Автор 1", "Автор 2"],
+        "tags": ["Фантастика", "Приключения"],
+      },
+      {
+        "id": 2,
+        "title": "Заголовок карточки который умещается в три строчки, в противоположном случае сокращается",
+        "slug": "kniga-2",
+        "cover": "cover2",
+        "authors": ["Автор 3"],
+        "tags": ["Детектив", "Триллер"],
+      },
+      {
+        "id": 3,
+        "title": "Книга 3",
+        "slug": "kniga-3",
+        "cover": "cover1",
+        "authors": ["Автор 4"],
+        "tags": ["Роман"],
+      },
+      {
+        "id": 4,
+        "title": "Заголовок карточки который умещается в две строчки",
+        "slug": "kniga-4",
+        "cover": "cover3",
+        "authors": null,
+        "tags": ["НаучнаяЛитература"],
+      },
+      {
+        "id": 5,
+        "title": "Книга 5",
+        "slug": "kniga-5",
+        "cover": "cover2",
+        "authors": ["Автор 6"],
+        "tags": null,
+      },
+      {
+        "id": 6,
+        "title": "Книга 6",
+        "slug": "kniga-6",
+        "cover": null,
+        "authors": ["Автор 7"],
+        "tags": ["Роман", "Фантастика"],
+      },
+      {
+        "id": 7,
+        "title": "Книга 7",
+        "slug": "kniga-7",
+        "cover": null,
+        "authors": null,
+        "tags": null,
+      },
+      {
+        "id": 8,
+        "title": "Книга 8",
+        "slug": "kniga-8",
+        "cover": "cover1",
+        "authors": ["Автор 9"],
+        "tags": ["Роман", "НаучнаяЛитература"],
+      }
+    ] as Array<Book>)
+
+    const selectedBook = ref(0);
+    const currentIndex = ref(0);
+    const flicking = ref<typeof Flicking | null>(null);
+
+    const onChanged = (e: Record<string, number>) => {
+      currentIndex.value = e.index;
+      selectedBook.value = e.index;
+    };
+
+    const goToBook = (e: Event) => {
+      selectedBook.value = Number((e.target as HTMLSelectElement).value);
+      flicking.value?.moveTo(Number(selectedBook.value)).catch(() => { console.log(1) });
+    };
+
+    onMounted(() => {
+      flicking.value?.moveTo(currentIndex.value).catch(() => { console.log(2) });
+    });
+
     return {
       inputValue,
       placeholderText,
-      url
+      url,
+      books,
+      selectedBook,
+      currentIndex,
+      flicking,
+      onChanged,
+      goToBook
     };
   },
 });
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/styles/HomePage.scss';
+<style scoped>
+@import '@/assets/styles/HomePage.css';
 </style>

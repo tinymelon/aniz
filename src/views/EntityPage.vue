@@ -19,6 +19,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/styles/EntityPage.scss';
+<style scoped>
+@import '@/assets/styles/EntityPage.css';
 </style>
