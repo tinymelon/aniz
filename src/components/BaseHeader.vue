@@ -30,9 +30,9 @@ header {
   padding: 24px 0;
 }
 #menu {
-
   display: flex;
   gap: var(--menuGap);
+  align-items: center;
   height: 78px;
   border: 1px solid var(--gray-color-3);
   border-radius: 20px;

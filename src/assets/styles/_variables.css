@@ -28,3 +28,18 @@
         --menuGap: 50px;
     }
 }
+@media screen and (max-width: 1400px) {
+    :root {
+        --menuGap: 40px;
+
+        --font-size-h1: 80px;
+        --font-size-h2: 66px;
+        --font-size-h3: 22px;
+        --font-size-h4: 16px;
+
+        --line-height-h1: 1.1;
+        --line-height-h2: 1.2;
+        --line-height-h3: 1.25;
+        --line-height-h4: 1.33;
+    }
+}
