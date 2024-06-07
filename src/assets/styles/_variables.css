@@ -1,5 +1,6 @@
 :root {
     --primary-color: #056DE7;
+    --primary-color-lighter: #05b0e7;
     --gray-color-1: #fafafb;
     --gray-color-2: #f2f2f2;
     --gray-color-3: #e6e6e6;
@@ -9,7 +10,7 @@
     --primary-gradient-hover: linear-gradient(135deg, #05b0e7 0%, #2696fa 50%, #057ce7 100%);
 
 
-    --font-family-base: Inter, Arial, Helvetica, serif;
+    --font-family-base: 'Raleway', Inter, Arial, Helvetica, serif;
     --font-size-h1: 88px;
     --font-size-h2: 72px;
     --font-size-h3: 24px;

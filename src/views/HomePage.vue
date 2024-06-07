@@ -6,7 +6,10 @@
         <BaseButton :url="url">Перейти к поиску</BaseButton>
       </div>
     </div>
-    <img src="@/assets/images/main_bg.png" alt="" class="banner-image">
+    <div class="banner-image-wrapper">
+      <img src="@/assets/images/main_bg.png" alt="" class="banner-image">
+      <div class="banner-image-text h1">2010 <small class="h3">материалов</small></div>
+    </div>
   </section>
   <section class="documents-section">
     <div class="container">
@@ -79,7 +82,7 @@ export default defineComponent({
         "slug": "kniga-2",
         "cover": "cover2",
         "authors": ["Автор 3"],
-        "tags": ["Детектив", "Триллер"],
+        "tags": ["Детектив", "Средний тег"],
       },
       {
         "id": 3,
@@ -87,7 +90,7 @@ export default defineComponent({
         "slug": "kniga-3",
         "cover": "cover1",
         "authors": ["Автор 4"],
-        "tags": ["Роман"],
+        "tags": ["Очень длинное название тега"],
       },
       {
         "id": 4,
@@ -111,7 +114,7 @@ export default defineComponent({
         "slug": "kniga-6",
         "cover": null,
         "authors": ["Автор 7"],
-        "tags": ["Роман", "Фантастика"],
+        "tags": ["Очень длинное название тега", "Фантастика"],
       },
       {
         "id": 7,
@@ -127,7 +130,7 @@ export default defineComponent({
         "slug": "kniga-8",
         "cover": "cover1",
         "authors": ["Автор 9"],
-        "tags": ["Роман", "НаучнаяЛитература"],
+        "tags": ["Очень длинное название тега", "НаучнаяЛитература"],
       }
     ] as Array<Book>)
 

@@ -1,16 +1,16 @@
 <template>
   <div class="book-card" :data-id="book.id">
-    <router-link :to="`/search/${book.slug}`" class="book-cover">
-      <img :src="book.cover ? require(`@/assets/images/${book.cover}.png`) : require('@/assets/images/no_cover.png')" :alt="book.title">
+    <router-link :to="`/search/${book.slug}`" class="book-cover" @dragstart.prevent>
+      <img :src="book.cover ? require(`@/assets/images/${book.cover}.png`) : require('@/assets/images/no_cover.png')" :alt="book.title" @dragstart.prevent>
     </router-link>
     <div class="book-author" v-if="book.authors && book.authors.length">
       {{ book.authors.join(', ') }}
     </div>
-    <router-link :to="`/search/${book.slug}`" class="book-title">{{ book.title }}</router-link>
+    <router-link :to="`/search/${book.slug}`" class="book-title" @dragstart.prevent>{{ book.title }}</router-link>
     <div class="book-tags" v-if="book.tags && book.tags.length">
-      <router-link v-for="(tag, index) in book.tags" :key="index" :to="`/search?tag=${tag}`">{{ '#' + tag }}</router-link>
+      <router-link v-for="(tag, index) in book.tags" :key="index" :to="`/search?tag=${tag}`" @dragstart.prevent>{{ '#' + tag }}</router-link>
     </div>
-    <router-link :to="`/search/${book.slug}`" class="book-button">Смотреть материал</router-link>
+    <router-link :to="`/search/${book.slug}`" class="book-button" @dragstart.prevent>Смотреть материал</router-link>
   </div>
 </template>
 
@@ -55,6 +55,7 @@ export default defineComponent({
     height: 100%;
     object-fit: contain;
     object-position: center;
+    pointer-events: none;
   }
 }
 .book-author {

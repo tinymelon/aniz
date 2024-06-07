@@ -8,6 +8,7 @@
 }
 
 .base-button {
+  display: inline-block;
   cursor: pointer;
   background: var(--primary-gradient);
   color: #fff;
@@ -16,7 +17,6 @@
   font-size: var(--font-size-h3);
   line-height: 1;
   text-decoration: none;
-  display: inline-block;
   border-radius: var(--button-padding);
   --smooth-corners: 7;
   mask-image: paint(smooth-corners);

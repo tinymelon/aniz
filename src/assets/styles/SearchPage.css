@@ -1,0 +1,96 @@
+.search-header {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-transform: uppercase;
+
+    .search-back {
+        width: 40px;
+        height: 40px;
+        background: url('@/assets/images/arrow_back.svg') no-repeat center;
+        background-size: 12px 23px;
+    }
+}
+
+.search-filters {
+    margin-top: 21px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.search-carousel-wrapper {
+    margin-top: 27px;
+
+    .book-card {
+        margin-right: 16px;
+    }
+}
+.carousel-controls {
+    margin-top: 32px;
+    margin-bottom: 52px;
+    display: flex;
+    gap: 24px;
+
+    button {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        --smooth-corners: 4;
+        border-radius: 22px;
+
+        &:before {
+            content: ' ';
+            display: block;
+            width: 20px;
+            height: 17px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url('@/assets/images/arrow_right.svg');
+            transform-origin: top left;
+        }
+
+        &.prev:before {
+            transform: rotate(-180deg) translate(-50%, -50%);
+        }
+
+        &:disabled {
+            background: transparent;
+            border: 1px solid var(--gray-color-3);
+
+            &:before {
+                filter: invert(1);
+                opacity: 0.1;
+            }
+        }
+    }
+}
+
+.search-filters-output {
+    display: flex;
+    gap: 19px;
+    flex-wrap: wrap;
+    margin-top: 21px;
+
+    .search-filters-output-block {
+        display: flex;
+        padding: 8px 12px;
+        gap: 8px;
+        background: var(--primary-color);
+        color: #fff;
+        line-height: 1;
+        font-size: var(--font-size-h4);
+        border-radius: 48px;
+
+        .remove-tag {
+            width: 16px;
+            height: 16px;
+            background: #fff url('@/assets/images/remove_tag.svg') no-repeat center;
+            background-size: 8px;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}

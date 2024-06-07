@@ -3,11 +3,11 @@
     <header>
       <router-link to="/" class="logo"></router-link>
       <div id="menu">
-        <router-link to="/search?category=0">Монографии</router-link>
-        <router-link to="/search?category=1">Исторические документы</router-link>
-        <router-link to="/search?category=2">Периодика</router-link>
-        <router-link to="/search?category=3">Диссертации</router-link>
-        <router-link to="/search?category=4">Учебные пособия</router-link>
+        <router-link to="/search?category=3">Монографии</router-link>
+        <router-link to="/search?category=4">Исторические документы</router-link>
+        <router-link to="/search?category=1">Периодика</router-link>
+        <router-link to="/search?category=2">Диссертации</router-link>
+        <router-link to="/search?category=0">Учебные пособия</router-link>
       </div>
       <router-link to="/search" class="search"></router-link>
     </header>
