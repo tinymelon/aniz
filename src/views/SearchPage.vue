@@ -209,7 +209,7 @@ export default defineComponent({
                 booksData.forEach((book) => {
                   const bookValue = book[e];
                   const isArr = Array.isArray(bookValue);
-                  if (isArr && bookValue.includes(f)) {
+                  if (isArr && (bookValue as string[]).includes(f)) {
                     filteredBooks.push(book);
                   } else if (!isArr && bookValue === f) {
                     filteredBooks.push(book);
