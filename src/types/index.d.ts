@@ -5,6 +5,8 @@ export interface Book {
     cover: string | null;
     authors: Array<string> | null;
     tags: Array<string> | null;
+
+    [key: string]: string[] | number[];
 }
 
 export interface BookFull extends Book {

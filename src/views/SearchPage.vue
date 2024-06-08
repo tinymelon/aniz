@@ -114,12 +114,14 @@ export default defineComponent({
     });
     const handleFilterChange = ({ name, values }: { name: string; values: string[] }) => {
       selectedFilters.value[name] = values;
+
+      fetchData(selectedFilters.value);
     };
     const removeFilter = (filterType: string, filterValue: string) => {
-      const index = selectedFilters.value[filterType].indexOf(filterValue);
-      if (index > -1) {
-        selectedFilters.value[filterType].splice(index, 1);
-      }
+      const newArray = selectedFilters.value[filterType].filter(item => item !== filterValue);
+      selectedFilters.value = { ...selectedFilters.value, [filterType]: newArray };
+
+      fetchData(selectedFilters.value);
     };
 
     const updateItemsPerView = () => {
@@ -183,28 +185,59 @@ export default defineComponent({
     });
 
     const handleClick = () => {
-      console.log('Button clicked!');
+      alert(`Ищем по запросу: /api/search?category=${JSON.stringify(selectedFilters.value.category)}&historicalPeriod=${JSON.stringify(selectedFilters.value.historicalPeriod)}&tags=${JSON.stringify(selectedFilters.value.tags)}&q=${searchTerm.value}`)
     };
 
-    const fetchData = async () => {
-      let data, response;
+    const fetchData = async (filters: SelectedFilters = {}) => {
+      let booksData: Book[], response, tagsData: string[];
+      let filtersAvailiable = false;
+
+      Object.keys(filters).forEach((k) => {
+        if (filters[k] && filters[k].length) filtersAvailiable = true;
+      });
+
       try {
         response = await fetch('/books.json');
-        data = await response.json();
-        books.value = data;
+        booksData = await response.json();
+        if (filtersAvailiable) {
+          let filteredBooks: Book[] = [];
+
+          Object.keys(filters).forEach((e) => {
+            const filter = filters[e];
+            if (filter && filter.length) {
+              filter.forEach((f) => {
+                booksData.forEach((book) => {
+                  const bookValue = book[e];
+                  const isArr = Array.isArray(bookValue);
+                  if (isArr && bookValue.includes(f)) {
+                    filteredBooks.push(book);
+                  } else if (!isArr && bookValue === f) {
+                    filteredBooks.push(book);
+                  }
+                });
+              });
+            }
+          });
+
+          books.value = filteredBooks;
+        } else {
+          books.value = booksData;
+        }
       } catch (error) {
         console.error('Ошибка при загрузке данных книг:', error);
       }
-      try {
-        response = await fetch('/tags.json');
-        data = await response.json();
-        tags.value = data;
+      if (!tags.value) {
+        try {
+          response = await fetch('/tags.json');
+          tagsData = await response.json();
+          tags.value = tagsData;
 
-        if (tag.value) {
-          selectedFilters.value.tags = [tag.value as string];
+          if (tag.value) {
+            selectedFilters.value.tags = [tag.value as string];
+          }
+        } catch (error) {
+          console.error('Ошибка при загрузке данных тегов:', error);
         }
-      } catch (error) {
-        console.error('Ошибка при загрузке данных тегов:', error);
       }
     };
 

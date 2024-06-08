@@ -1,5 +1,6 @@
 <template>
   <div :class="['filter-wrapper', { 'active': isFilterOpened }, { 'big': filtersBig }]">
+    <div class="filter-bg" @click="closePopup"></div>
     <div class="filter-select-button" @click="togglePopup">{{ title }}</div>
     <div class="filter-select-popup" v-if="isFilterOpened">
       <div class="filter-select-popup-info">
@@ -208,7 +209,7 @@ export default defineComponent({
   }
 
   &.active {
-    &:before {
+    .filter-bg {
       content: ' ';
       display: block;
       width: 100vw;

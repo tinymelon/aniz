@@ -16,8 +16,20 @@
 .search-filters {
     margin-top: 21px;
     display: flex;
+    gap: 22px;
     justify-content: space-between;
     position: relative;
+
+    .filter-wrapper.big {
+        min-width: 354px;
+
+        .filter-select-button {
+            width: 100%;
+        }
+    }
+    input {
+        width: -webkit-fill-available;
+    }
 }
 .search-carousel-wrapper {
     margin-top: 27px;
@@ -91,6 +103,23 @@
             background-size: 8px;
             border-radius: 100%;
             cursor: pointer;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1620px) {
+    .search-filters {
+        gap: 15px;
+
+        .filter-wrapper {
+            .filter-select-button {
+                font-size: var(--font-size-h4);
+            }
+        }
+
+        .filter-wrapper.big {
+            min-width: 290px;
         }
     }
 }
