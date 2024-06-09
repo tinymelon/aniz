@@ -110,7 +110,7 @@ export default defineComponent({
     const selectedFilters = ref<SelectedFilters>({
       historicalPeriod: [],
       category: category.value ? [category.value as string] : [],
-      tags: []
+      tags: tag.value ? [tag.value as string] : []
     });
     const handleFilterChange = ({ name, values }: { name: string; values: string[] }) => {
       selectedFilters.value[name] = values;
@@ -158,30 +158,38 @@ export default defineComponent({
 
     watch(() => route.query.category, (newCategory) => {
       category.value = newCategory;
-      if (!newCategory) {
-        selectedFilters.value.category = [];
-      } else {
+      let newFilters: SelectedFilters = {
+        category: []
+      };
+      if (newCategory) {
         tag.value = null;
-        selectedFilters.value = {
+        newFilters = {
           category: newCategory ? [newCategory as string] : [],
           tags: [],
           historicalPeriod: []
         }
       }
+
+      selectedFilters.value = newFilters;
+      fetchData(selectedFilters.value);
     });
 
     watch(() => route.query.tag, (newTag) => {
       tag.value = newTag;
-      if (!newTag) {
-        selectedFilters.value.tags = [];
-      } else {
+      let newFilters: SelectedFilters = {
+        tags: []
+      };
+      if (newTag) {
         category.value = null;
-        selectedFilters.value = {
+        newFilters = {
           category: [],
           tags: newTag ? [newTag as string] : [],
           historicalPeriod: []
         }
       }
+
+      selectedFilters.value = newFilters;
+      fetchData(selectedFilters.value);
     });
 
     const handleClick = () => {
@@ -190,16 +198,16 @@ export default defineComponent({
 
     const fetchData = async (filters: SelectedFilters = {}) => {
       let booksData: Book[], response, tagsData: string[];
-      let filtersAvailiable = false;
+      let filtersAvailable = false;
 
       Object.keys(filters).forEach((k) => {
-        if (filters[k] && filters[k].length) filtersAvailiable = true;
+        if (filters[k] && filters[k].length) filtersAvailable = true;
       });
 
       try {
         response = await fetch('/books.json');
         booksData = await response.json();
-        if (filtersAvailiable) {
+        if (filtersAvailable) {
           let filteredBooks: Book[] = [];
 
           Object.keys(filters).forEach((e) => {
@@ -267,7 +275,7 @@ export default defineComponent({
       category.value = route.query.category;
       tag.value = route.query.tag;
 
-      fetchData();
+      fetchData(selectedFilters.value);
 
       updateItemsPerView();
       window.addEventListener('resize', updateItemsPerView);

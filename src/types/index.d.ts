@@ -1,5 +1,5 @@
 export interface Book {
-    id: number;
+    id: string;
     title: string;
     slug: string;
     cover: string | null;
@@ -13,7 +13,7 @@ export interface BookFull extends Book {
     publisher: string;
     historicalPeriod: number;
     category: number;
-    relative: Array<number> | null;
+    relative: Array<string> | null;
     lead: string;
     description: string;
 }

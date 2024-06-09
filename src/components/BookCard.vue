@@ -3,7 +3,7 @@
     <router-link :to="`/search/${book.slug}`" class="book-cover" @dragstart.prevent>
       <img :src="book.cover ? require(`@/assets/images/${book.cover}.png`) : require('@/assets/images/no_cover.png')" :alt="book.title" @dragstart.prevent>
     </router-link>
-    <div class="book-author" v-if="book.authors && book.authors.length">
+    <div class="book-author" v-if="book.authors?.length">
       {{ book.authors.join(', ') }}
     </div>
     <router-link :to="`/search/${book.slug}`" class="book-title" @dragstart.prevent>{{ book.title }}</router-link>
