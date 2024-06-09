@@ -31,16 +31,16 @@
       />
       <BaseButton @click="handleClick">Искать</BaseButton>
     </div>
-    <div class="search-filters-output">
-      <div class="search-filters-output-block" v-for="(filter, index) in selectedFilters.historicalPeriod" :key="index">
+    <div class="search-filters-output styled-tags-wrapper">
+      <div class="search-filters-output-block styled-tag" v-for="(filter, index) in selectedFilters.historicalPeriod" :key="index">
         Исторический период: {{ historicalPeriodOptions.find((e) => e.value === filter)['title'] }}
         <div class="remove-tag" @click="removeFilter('historicalPeriod', filter)"></div>
       </div>
-      <div class="search-filters-output-block" v-for="(filter, index) in selectedFilters.category" :key="index">
+      <div class="search-filters-output-block styled-tag" v-for="(filter, index) in selectedFilters.category" :key="index">
         Категория материала: {{ categoryOptions.find((e) => e.value === filter)['title'] }}
         <div class="remove-tag" @click="removeFilter('category', filter)"></div>
       </div>
-      <div class="search-filters-output-block" v-for="(filter, index) in selectedFilters.tags" :key="index">
+      <div class="search-filters-output-block styled-tag" v-for="(filter, index) in selectedFilters.tags" :key="index">
         {{ filter }}
         <div class="remove-tag" @click="removeFilter('tags', filter)"></div>
       </div>

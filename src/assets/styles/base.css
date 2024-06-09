@@ -21,15 +21,20 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
-.entity-tags {
-  font-size: var(--font-size-small);
-  line-height: 1.4;
+.styled-tags-wrapper {
   display: flex;
+  gap: 19px;
   flex-wrap: wrap;
-  gap: 8px;
 
-  a {
-    color: var(--primary-color);
+  .styled-tag {
+    display: flex;
+    padding: 8px 12px;
+    gap: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    line-height: 1;
+    font-size: var(--font-size-h4);
+    border-radius: 48px;
   }
 }
 

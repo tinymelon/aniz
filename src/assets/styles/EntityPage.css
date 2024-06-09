@@ -1,6 +1,8 @@
-.entity-section {
+.entity-section.container {
     display: flex;
     gap: 20px;
+    margin-top: 69px;
+    margin-bottom: 95px;
 }
 
 .entity-summary {
@@ -55,4 +57,39 @@
     display: flex;
     gap: 24px;
     flex-direction: column;
+
+    h2 {
+        text-transform: uppercase;
+    }
+}
+
+.entity-cover-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+
+    .entity-cover {
+        width: 445px;
+    }
+
+    .base-button {
+        padding-left: 63px;
+        padding-right: 63px;
+    }
+}
+
+.entity-lead, .entity-description-wrapper {
+    max-width: 910px;
+}
+
+.entity-page-header {
+    text-transform: uppercase;
+    color: var(--gray-color-4);
+    margin-bottom: 19px;
+}
+
+.entity-relative {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }

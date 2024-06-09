@@ -81,21 +81,9 @@
 }
 
 .search-filters-output {
-    display: flex;
-    gap: 19px;
-    flex-wrap: wrap;
     margin-top: 21px;
 
     .search-filters-output-block {
-        display: flex;
-        padding: 8px 12px;
-        gap: 8px;
-        background: var(--primary-color);
-        color: #fff;
-        line-height: 1;
-        font-size: var(--font-size-h4);
-        border-radius: 48px;
-
         .remove-tag {
             width: 16px;
             height: 16px;

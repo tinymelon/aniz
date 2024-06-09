@@ -7,7 +7,7 @@
       {{ book.authors.join(', ') }}
     </div>
     <router-link :to="`/search/${book.slug}`" class="book-title" @dragstart.prevent>{{ book.title }}</router-link>
-    <div class="book-tags entity-tags" v-if="book.tags && book.tags.length">
+    <div class="book-tags" v-if="book.tags && book.tags.length">
       <router-link v-for="(tag, index) in book.tags" :key="index" :to="`/search?tag=${tag}`" @dragstart.prevent>{{ '#' + tag }}</router-link>
     </div>
     <router-link :to="`/search/${book.slug}`" class="book-button" @dragstart.prevent>Смотреть материал</router-link>
@@ -69,7 +69,16 @@ export default defineComponent({
   text-overflow: ellipsis;
 }
 .book-tags {
+  font-size: var(--font-size-small);
+  line-height: 1.4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   justify-content: center;
+
+  a {
+    color: var(--primary-color);
+  }
 }
 .book-button {
   background-color: var(--gray-color-2);
