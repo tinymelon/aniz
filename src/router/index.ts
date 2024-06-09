@@ -6,7 +6,7 @@ import EntityPage from '@/views/EntityPage.vue';
 const routes: Array<RouteRecordRaw> = [
     { path: '/', name: 'Home', component: HomePage },
     { path: '/search', name: 'Search', component: SearchPage },
-    { path: '/search/:someTitle', name: 'Entity', component: EntityPage, props: true },
+    { path: '/search/:slug', name: 'Entity', component: EntityPage, props: true },
 ];
 
 const router = createRouter({
