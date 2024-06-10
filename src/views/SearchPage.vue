@@ -112,6 +112,11 @@ export default defineComponent({
       category: category.value ? [category.value as string] : [],
       tags: tag.value ? [tag.value as string] : []
     });
+    const tempFilters = ref<SelectedFilters>({
+      historicalPeriod: [],
+      category: [],
+      tags: []
+    });
     const handleFilterChange = ({ name, values }: { name: string; values: string[] }) => {
       selectedFilters.value[name] = values;
 
@@ -302,6 +307,7 @@ export default defineComponent({
       removeFilter,
       historicalPeriodOptions,
       categoryOptions,
+      tempFilters
     };
   },
 });

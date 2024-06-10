@@ -5,7 +5,7 @@
     <div class="filter-select-popup" v-if="isFilterOpened">
       <div class="filter-select-popup-info">
         <div class="filter-select-popup-title">{{ title }}</div>
-        <div class="filter-select-popup-close base-button" @click="closePopup">Применить</div>
+        <div class="filter-select-popup-close base-button" @click="applyFilters">Применить</div>
       </div>
       <div class="filter-select-list">
         <label v-for="(option, index) in options" :key="index" :class="{ 'checked': isChecked(option.value) }">
@@ -51,12 +51,20 @@ export default defineComponent({
     const preSelected = ref([...props.selected]);
 
     const togglePopup = () => {
+      if (!isFilterOpened.value) {
+        preSelected.value = [...props.selected]; // Reset temp filters when opening
+      }
       isFilterOpened.value = !isFilterOpened.value;
     };
 
     const closePopup = () => {
+      preSelected.value = [...props.selected];
       isFilterOpened.value = false;
-      emit('update:preSelected', { name: props.name, values: preSelected.value });
+    };
+
+    const applyFilters = () => {
+      emit('change', { name: props.name, values: preSelected.value });
+      isFilterOpened.value = false;
     };
 
     const handleChange = (value:string) => {
@@ -66,8 +74,6 @@ export default defineComponent({
       } else {
         preSelected.value.push(value);
       }
-
-      emit('change', { name: props.name, values: preSelected.value });
     };
 
     const isChecked = (value:string) => {
@@ -85,6 +91,7 @@ export default defineComponent({
       closePopup,
       handleChange,
       isChecked,
+      applyFilters
     };
   },
 });
