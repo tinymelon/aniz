@@ -26,7 +26,7 @@ export default defineComponent({
 header {
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   padding: 24px 0;
 }
 #menu {
@@ -74,5 +74,31 @@ header {
   background-size: 24px;
   border: 1px solid var(--gray-color-3);
   border-radius: 20px;
+}
+
+@media screen and (max-width: 1220px) {
+  .search {
+    width: 60px;
+  }
+
+  #menu a:before {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  #menu {
+    font-size: var(--font-size-h4);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #menu {
+    display: none;
+  }
+
+  .search {
+    width: 75px;
+  }
 }
 </style>

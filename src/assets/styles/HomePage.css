@@ -144,9 +144,25 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 45px 38px;
+        align-items: center;
 
         img {
             max-height: 90px;
         }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .banner-image-wrapper {
+        display: none;
+    }
+
+    .banner-section .container {
+        height: auto;
+    }
+
+    .banner-text {
+        margin-top: 0;
+        max-width: none;
     }
 }

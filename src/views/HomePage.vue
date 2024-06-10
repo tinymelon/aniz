@@ -34,11 +34,11 @@
   <section class="partners-section">
     <h2>Наши партнёры</h2>
     <div class="partners-logos">
-      <img src="@/assets/images/ifla.png" alt="IFLA">
-      <img src="@/assets/images/mfgs.png" alt="MFGS">
-      <img src="@/assets/images/svet.svg" alt="НЭБ Свет">
-      <img src="@/assets/images/bae.svg" alt="БАЕ">
-      <img src="@/assets/images/rgb.png" alt="РГБ">
+      <a href="https://www.ifla.org/" target="_blank"><img src="@/assets/images/ifla.png" alt="IFLA"></a>
+      <a href="https://www.mfgs-sng.org/" target="_blank"><img src="@/assets/images/mfgs.png" alt="MFGS"></a>
+      <a href="https://svetapp.rusneb.ru/" target="_blank"><img src="@/assets/images/svet.svg" alt="НЭБ Свет"></a>
+      <a href="https://bae.rsl.ru/" target="_blank"><img src="@/assets/images/bae.svg" alt="БАЕ"></a>
+      <a href="https://olden.rsl.ru/" target="_blank"><img src="@/assets/images/rgb.png" alt="РГБ"></a>
     </div>
   </section>
 </template>

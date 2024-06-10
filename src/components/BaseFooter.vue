@@ -23,4 +23,11 @@ footer {
   border-top: 1px solid var(--gray-color-3);
   letter-spacing: 0.3px;
 }
+
+@media screen and (max-width: 1000px) {
+  footer {
+    font-size: var(--font-size-h4);
+    gap: 20px;
+  }
+}
 </style>

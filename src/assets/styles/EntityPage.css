@@ -93,3 +93,32 @@
     gap: 8px;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 1400px) {
+    .entity-summary {
+        min-width: 350px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .entity-section.container {
+        flex-direction: column;
+    }
+
+    .entity-summary {
+        min-width: 0;
+    }
+
+    .entity-cover-wrapper {
+        flex-direction: column;
+        align-items: center;
+
+        .entity-cover {
+            width: 100%;
+        }
+    }
+
+    .entity-relative {
+        justify-content: center;
+    }
+}

@@ -41,6 +41,22 @@ h1, h2, h3, h4 {
 @media screen and (max-width: 1700px) {
   .container {
     margin: 0 auto;
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width: 1480px) {
+  .container {
+    margin: 0 auto;
     max-width: 1400px;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 0 2%;
   }
 }

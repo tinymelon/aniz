@@ -111,3 +111,30 @@
         }
     }
 }
+
+@media screen and (max-width: 1220px) {
+    .search-filters {
+        gap: 10px;
+
+        .filter-wrapper {
+            .filter-select-button {
+                padding-right: 40px;
+
+                &:after {
+                    right: 16px;
+                }
+            }
+        }
+
+        .filter-wrapper.big {
+            min-width: 250px;
+        }
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .search-filters {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
