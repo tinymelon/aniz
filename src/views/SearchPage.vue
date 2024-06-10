@@ -208,7 +208,7 @@ export default defineComponent({
         response = await fetch('/books.json');
         booksData = await response.json();
         if (filtersAvailable) {
-          let filteredBooks: Book[] = [];
+          const filteredBooks = new Set<Book>();
 
           Object.keys(filters).forEach((e) => {
             const filter = filters[e];
@@ -218,16 +218,16 @@ export default defineComponent({
                   const bookValue = book[e];
                   const isArr = Array.isArray(bookValue);
                   if (isArr && (bookValue as string[]).includes(f)) {
-                    filteredBooks.push(book);
+                    filteredBooks.add(book);
                   } else if (!isArr && bookValue === f) {
-                    filteredBooks.push(book);
+                    filteredBooks.add(book);
                   }
                 });
               });
             }
           });
 
-          books.value = filteredBooks;
+          books.value = Array.from(filteredBooks);
         } else {
           books.value = booksData;
         }
